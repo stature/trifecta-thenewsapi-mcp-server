@@ -40,11 +40,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TODO-ORG/thenewsapi-mcp-server.git"
+    "url": "git+https://github.com/stature/trifecta-thenewsapi-mcp-server.git"
   },
-  "homepage": "https://github.com/TODO-ORG/thenewsapi-mcp-server#readme",
+  "homepage": "https://github.com/stature/trifecta-thenewsapi-mcp-server#readme",
   "bugs": {
-    "url": "https://github.com/TODO-ORG/thenewsapi-mcp-server/issues"
+    "url": "https://github.com/stature/trifecta-thenewsapi-mcp-server/issues"
   },
   "publishConfig": {
     "access": "public"

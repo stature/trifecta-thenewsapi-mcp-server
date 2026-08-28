@@ -104,8 +104,8 @@ npm install -g @trifecta/thenewsapi-mcp-server
 ## Local development setup (while unpublished)
 
 ```bash
-git clone <this repo>
-cd newsapi-mcp
+git clone https://github.com/stature/trifecta-thenewsapi-mcp-server.git
+cd trifecta-thenewsapi-mcp-server
 
 npm install
 cp .env.example .env
@@ -230,9 +230,8 @@ npm run typecheck
 npm publish            # scoped package; publishConfig.access is already "public"
 ```
 
-Before the first publish: replace the `TODO-ORG` placeholders in `package.json`
-(`repository`, `homepage`, `bugs`) with the real repo URL, and make sure you're a member
-of the `@trifecta` npm org.
+Before the first publish: make sure you're a member of the `@trifecta` npm org. Repo:
+<https://github.com/stature/trifecta-thenewsapi-mcp-server>.
 
 Versioning: starts at `0.1.0` (pre-1.0 — the tool surface may still change). Follow semver
 afterwards.
