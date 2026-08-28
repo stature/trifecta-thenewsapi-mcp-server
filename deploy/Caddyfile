@@ -4,7 +4,7 @@
 # this VM's public IP. Caddy then obtains and renews a Let's Encrypt certificate
 # automatically (needs inbound 80 + 443 open).
 
-mcp.example.com {
+newsmcp.canadianconcreteexpo.com {
 	encode zstd gzip
 
 	# Health probe (no auth) — handy for uptime monitors.
