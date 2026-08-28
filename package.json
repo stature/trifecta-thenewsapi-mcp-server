@@ -1,0 +1,61 @@
+{
+  "name": "@trifecta/thenewsapi-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server exposing TheNewsAPI.com read endpoints (search, top stories, headlines, similar articles, sources) as tools for AI assistants such as Claude.",
+  "type": "module",
+  "bin": {
+    "thenewsapi-mcp-server": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js",
+    "dev": "npm run build && node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "modelcontextprotocol",
+    "thenewsapi",
+    "news",
+    "news-api",
+    "claude",
+    "claude-code",
+    "ai-tools"
+  ],
+  "author": "Stature Marketing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TODO-ORG/thenewsapi-mcp-server.git"
+  },
+  "homepage": "https://github.com/TODO-ORG/thenewsapi-mcp-server#readme",
+  "bugs": {
+    "url": "https://github.com/TODO-ORG/thenewsapi-mcp-server/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3"
+  }
+}
