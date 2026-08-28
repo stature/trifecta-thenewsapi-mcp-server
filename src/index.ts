@@ -1,20 +1,22 @@
 #!/usr/bin/env node
 /**
- * TheNewsAPI MCP server — entrypoint.
+ * TheNewsAPI MCP server — stdio entrypoint.
  *
  * Exposes TheNewsAPI.com read endpoints as MCP tools over stdio, for use with
- * Claude Code / Claude Desktop MCP config.
+ * Claude Code / Claude Desktop MCP config (the client spawns this process).
+ *
+ * For a remote, network-reachable server (Streamable HTTP), use `dist/http.js`
+ * (`npm run start:http`) instead.
  *
  * The API token is read from NEWS_API_TOKEN (loaded from .env if present) and is
  * never logged.
  */
 
 import { config as loadEnv } from "dotenv";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
 import { NewsApiClient } from "./client.js";
-import { registerAllTools } from "./tools/index.js";
+import { createMcpServer } from "./server.js";
 
 loadEnv();
 
@@ -29,13 +31,7 @@ async function main() {
   }
 
   const client = new NewsApiClient({ token });
-
-  const server = new McpServer({
-    name: "thenewsapi-mcp",
-    version: "0.1.0",
-  });
-
-  registerAllTools(server, client);
+  const server = createMcpServer(client);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);

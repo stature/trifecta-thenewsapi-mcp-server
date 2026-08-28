@@ -4,7 +4,8 @@
   "description": "MCP server exposing TheNewsAPI.com read endpoints (search, top stories, headlines, similar articles, sources) as tools for AI assistants such as Claude.",
   "type": "module",
   "bin": {
-    "thenewsapi-mcp-server": "dist/index.js"
+    "thenewsapi-mcp-server": "dist/index.js",
+    "thenewsapi-mcp-http": "dist/http.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,10 +15,12 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc && chmod +x dist/index.js",
+    "build": "tsc && chmod +x dist/index.js dist/http.js",
     "watch": "tsc --watch",
     "start": "node dist/index.js",
+    "start:http": "node dist/http.js",
     "dev": "npm run build && node dist/index.js",
+    "dev:http": "npm run build && node dist/http.js",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build"
@@ -52,9 +55,11 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.18.0",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "@types/node": "^22.10.5",
     "typescript": "^5.7.3"
   }

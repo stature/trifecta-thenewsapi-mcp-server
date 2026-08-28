@@ -1,0 +1,32 @@
+# /etc/caddy/Caddyfile
+#
+# Replace mcp.example.com with your real domain. Its DNS A record must point at
+# this VM's public IP. Caddy then obtains and renews a Let's Encrypt certificate
+# automatically (needs inbound 80 + 443 open).
+
+mcp.example.com {
+	encode zstd gzip
+
+	# Health probe (no auth) — handy for uptime monitors.
+	handle /healthz {
+		reverse_proxy 127.0.0.1:3000
+	}
+
+	# MCP Streamable HTTP endpoint.
+	handle /mcp* {
+		reverse_proxy 127.0.0.1:3000 {
+			# Stream responses immediately (SSE) instead of buffering.
+			flush_interval -1
+		}
+	}
+
+	# Everything else: 404 without touching the app.
+	handle {
+		respond "Not found" 404
+	}
+
+	log {
+		output file /var/log/caddy/thenewsapi-mcp.log
+		format console
+	}
+}
